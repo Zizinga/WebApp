@@ -1,13 +1,142 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>{% block title %}Zizinga : Everyone should cracka rib...{% endblock %}</title>
+    {% block stylesheets %}
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <!-- Material Design Bootstrap -->
+        <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
+
+        <link href=""{{ asset('css/style.css" rel="stylesheet') }}">
+
+        <!-- Template styles -->
+        <style rel="stylesheet">
+            /* TEMPLATE STYLES */
+
+            main {
+                padding-top: 3rem;
+                padding-bottom: 2rem;
+            }
+
+            .widget-wrapper {
+                padding-bottom: 2rem;
+                border-bottom: 1px solid #e0e0e0;
+                margin-bottom: 2rem;
+            }
+
+            .navbar {
+                background-color: #53463d;
+            }
+
+            footer.page-footer {
+                background-color: #53463d;
+                margin-top: 2rem;
+
+            }
+        </style>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+
+<body>
+<header>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-toggleable-md navbar-dark">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <strong>Zizinga</strong>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav1">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link">Crack A Rib <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Post A Joke</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Ask Zizinga</a>
+                    </li>
+                    <li class="nav-item dropdown btn-group">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Zizinga Questions</a>
+                        <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item">Current Questions</a>
+                            <a class="dropdown-item">Past Questions</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline waves-effect waves-light">
+                    <input class="form-control" type="text" placeholder="Search">
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!--/.Navbar-->
+
+</header>
+<main>
+    <!--Main layout-->
+
+    <div class="container">
+        <div class="row">
+            {% block body %}
+
+            {% endblock body %}
+        </div>
+
+    </div>
+
+    <!--/.Main layout-->
+
+</main>
+<!--Footer-->
+<footer class="page-footer center-on-small-only">
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 Copyright Zizinga. All Rights Reserved </a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
+
+{% block javascripts %}
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{ asset('js/tether.min.js') }}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}s"></script>
+
+    <script>
+        new WOW().init();
+    </script>
+{% endblock %}
+</body>
 </html>

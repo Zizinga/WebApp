@@ -1,49 +1,106 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1>Welcome to Zizinga</h1>
+    <!--Main column-->
+    <div class="col-lg-8">
+
+        <!--Post-->
+        <div class="post-wrapper wow fadeIn" data-wow-delay="0.2s">
+            <!--Post data-->
+            <form class="form-inline">
+                <div class="row">
+                    <!--First column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <i class="fa fa-search prefix"></i>
+                            <input type="text" id="form76" class="form-control">
+                            <label for="form76">Search..</label>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+            <br>
+
+            <!--Featured image -->
+            <div class="view overlay hm-white-light z-depth-1-half">
+                <img src="http://mdbootstrap.com/img/Photos/Slides/img%20(116).jpg" class="img-fluid " alt="">
+                <div class="mask">
+                </div>
             </div>
 
-            <div id="status">
-                <p>
-                    The guy who will make you have a laugh and brighten your day..
-                </p>
-            </div>
+            <br>
 
+            <!--Post excerpt-->
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, officia omnis. Vero nihil neque
+                dignissimos hic voluptas quisquam amet porro, similique libero ullam veritatis tempora cumque
+                voluptates harum. Repellendus, impedit.</p>
+            <h6>Written by <a href="">James Kisoro</a>, 20th May 2017</h6>
+            <!--"Read more" button-->
+            <button class="btn btn-info">Read more</button>
 
 
         </div>
+        <!--/.Post-->
+
+        <hr>
+
+
+        <!--Post-->
+        <div class="post-wrapper wow fadeIn" data-wow-delay="0.2s">
+            <!--Post data-->
+            <!--Post excerpt-->
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, officia omnis. Vero nihil neque
+                dignissimos hic voluptas quisquam amet porro, similique libero ullam veritatis tempora cumque
+                voluptates harum. Repellendus, impedit.</p>
+            <h6>Written by <a href="">James Kisoro</a>, 20th May 2017</h6>
+            <!--"Read more" button-->
+            <button class="btn btn-info">Read more</button>
+
+
+        </div>
+
+        <!--/.Post-->
+
+        <hr>
+
+        <!--Post-->
+        <!--Post-->
+        <div class="post-wrapper wow fadeIn" data-wow-delay="0.2s">
+            <!--Post data-->
+
+            <!--Post excerpt-->
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, officia omnis. Vero nihil neque
+                dignissimos hic voluptas quisquam amet porro, similique libero ullam veritatis tempora cumque
+                voluptates harum. Repellendus, impedit.</p>
+            <h6>Written by <a href="">James Kisoro</a>, 20th May 2017</h6>
+            <!--"Read more" button-->
+            <button class="btn btn-info">Read more</button>
+
+
+        </div>
+        <!--/.Post-->
+
+        <hr>
+
+
     </div>
-{% endblock %}
 
-{% block stylesheets %}
-<style>
-    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
-    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
-    h1 { font-size: 36px; }
-    h2 { font-size: 21px; margin-bottom: 1em; }
-    p { margin: 0 0 1em 0; }
-    a { color: #0000F0; }
-    a:hover { text-decoration: none; }
-    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
-    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-    #container { padding: 2em; }
-    #welcome, #status { margin-bottom: 2em; }
-    #welcome h1 span { display: block; font-size: 75%; }
-    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
-    #icon-book { display: none; }
+    <!--Sidebar-->
+    <div class="col-lg-4">
 
-    @media (min-width: 768px) {
-        #wrapper { width: 80%; margin: 2em auto; }
-        #icon-book { display: inline-block; }
-        #status a, #next a { display: block; }
+        <div class="widget-wrapper wow fadeIn" data-wow-delay="0.4s">
+            <h4>Favourite Jokes:</h4>
+            <br>
+            <div class="list-group">
+                <a href="#" class="list-group-item">Most Liked</a>
+                <a href="#" class="list-group-item">Most Commented</a>
+                <a href="#" class="list-group-item">Most Shared</a>
+            </div>
+        </div>
 
-        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
-    }
-</style>
+    </div>
+    <!--/.Sidebar-->
 {% endblock %}
