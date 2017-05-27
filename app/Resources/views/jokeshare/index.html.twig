@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Jokeshares list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jokeShare in jokeShares %}
+            <tr>
+                <td><a href="{{ path('jokeshare_show', { 'id': jokeShare.id }) }}">{{ jokeShare.id }}</a></td>
+                <td>{% if jokeShare.date %}{{ jokeShare.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('jokeshare_show', { 'id': jokeShare.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('jokeshare_edit', { 'id': jokeShare.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('jokeshare_new') }}">Create a new jokeShare</a>
+        </li>
+    </ul>
+{% endblock %}

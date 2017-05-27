@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Jokecomments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jokeComment in jokeComments %}
+            <tr>
+                <td><a href="{{ path('jokecomment_show', { 'id': jokeComment.id }) }}">{{ jokeComment.id }}</a></td>
+                <td>{{ jokeComment.content }}</td>
+                <td>{% if jokeComment.date %}{{ jokeComment.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('jokecomment_show', { 'id': jokeComment.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('jokecomment_edit', { 'id': jokeComment.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('jokecomment_new') }}">Create a new jokeComment</a>
+        </li>
+    </ul>
+{% endblock %}

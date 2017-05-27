@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reportedjokes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reportedJoke in reportedJokes %}
+            <tr>
+                <td><a href="{{ path('reportedjoke_show', { 'id': reportedJoke.id }) }}">{{ reportedJoke.id }}</a></td>
+                <td>{% if reportedJoke.date %}{{ reportedJoke.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reportedjoke_show', { 'id': reportedJoke.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reportedjoke_edit', { 'id': reportedJoke.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reportedjoke_new') }}">Create a new reportedJoke</a>
+        </li>
+    </ul>
+{% endblock %}
