@@ -28,7 +28,19 @@ class ReportedJoke
      */
     private $date;
 
+    /**
+     * Many Reports have one author.
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $author;
 
+    /**
+     * One report of abuse has one joke.
+     * @ORM\OneToOne(targetEntity="Joke")
+     * @ORM\JoinColumn(name="joke_id", referencedColumnName="id")
+     */
+    private $joke;
     /**
      * Get id
      *
@@ -62,5 +74,52 @@ class ReportedJoke
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set author
+     *
+     * @param \AppBundle\Entity\User $author
+     *
+     * @return ReportedJoke
+     */
+    public function setAuthor(\AppBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Set joke
+     *
+     * @param \AppBundle\Entity\Joke $joke
+     *
+     * @return ReportedJoke
+     */
+    public function setJoke(\AppBundle\Entity\Joke $joke = null)
+    {
+        $this->joke = $joke;
+
+        return $this;
+    }
+
+    /**
+     * Get joke
+     *
+     * @return \AppBundle\Entity\Joke
+     */
+    public function getJoke()
+    {
+        return $this->joke;
+    }
+}

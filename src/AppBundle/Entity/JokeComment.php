@@ -35,6 +35,19 @@ class JokeComment
      */
     private $date;
 
+    /**
+     * Many comments have one author.
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $author;
+
+    /**
+     * Many comments belong to one joke.
+     * @ORM\ManyToOne(targetEntity="Joke")
+     * @ORM\JoinColumn(name="joke_id", referencedColumnName="id")
+     */
+    private $joke;
 
     /**
      * Get id
@@ -93,5 +106,52 @@ class JokeComment
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set author
+     *
+     * @param \AppBundle\Entity\User $author
+     *
+     * @return JokeComment
+     */
+    public function setAuthor(\AppBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Set joke
+     *
+     * @param \AppBundle\Entity\Joke $joke
+     *
+     * @return JokeComment
+     */
+    public function setJoke(\AppBundle\Entity\Joke $joke = null)
+    {
+        $this->joke = $joke;
+
+        return $this;
+    }
+
+    /**
+     * Get joke
+     *
+     * @return \AppBundle\Entity\Joke
+     */
+    public function getJoke()
+    {
+        return $this->joke;
+    }
+}

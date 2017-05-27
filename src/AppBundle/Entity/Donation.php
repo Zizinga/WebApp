@@ -187,4 +187,3 @@ class Donation
         return $this->status;
     }
 }
-

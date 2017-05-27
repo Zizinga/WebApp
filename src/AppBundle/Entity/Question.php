@@ -42,7 +42,13 @@ class Question
      */
     private $enabled;
 
-
+    /**
+     * Many questions have one author.
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $author;
+    
     /**
      * Get id
      *
@@ -124,5 +130,28 @@ class Question
     {
         return $this->enabled;
     }
-}
 
+    /**
+     * Set author
+     *
+     * @param \AppBundle\Entity\User $author
+     *
+     * @return Question
+     */
+    public function setAuthor(\AppBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+}
