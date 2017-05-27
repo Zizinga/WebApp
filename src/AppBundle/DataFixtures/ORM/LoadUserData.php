@@ -18,7 +18,7 @@ class LoadUserData implements FixtureInterface
         $userAdmin->setFirstName('Admin');
         $userAdmin->setOtherNames('Admin');
         $userAdmin->setComicName('Zizinga');
-        $userAdmin->setPassword('admin');
+        $userAdmin->setPlainPassword('admin');
         $userAdmin->setEnabled(true);
         $userAdmin->setEmail('admin@zizinga.me');
         $userAdmin->addRole('ROLE_ADMIN');

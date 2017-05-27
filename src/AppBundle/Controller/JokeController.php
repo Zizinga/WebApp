@@ -17,7 +17,7 @@ class JokeController extends Controller
     /**
      * Lists all joke entities.
      *
-     * @Route("/", name="joke_index")
+     * @Route("/jokes", name="joke_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -34,7 +34,7 @@ class JokeController extends Controller
     /**
      * Creates a new joke entity.
      *
-     * @Route("/new", name="joke_new")
+     * @Route("/jokes/new", name="joke_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -60,7 +60,7 @@ class JokeController extends Controller
     /**
      * Finds and displays a joke entity.
      *
-     * @Route("/{id}", name="joke_show")
+     * @Route("/jokes/show/{id}", name="joke_show")
      * @Method("GET")
      */
     public function showAction(Joke $joke)
@@ -76,7 +76,7 @@ class JokeController extends Controller
     /**
      * Displays a form to edit an existing joke entity.
      *
-     * @Route("/{id}/edit", name="joke_edit")
+     * @Route("/jokes/{id}/edit", name="joke_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Joke $joke)

@@ -17,7 +17,7 @@ class QuestionController extends Controller
     /**
      * Lists all question entities.
      *
-     * @Route("/", name="question_index")
+     * @Route("/questions", name="question_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -34,7 +34,7 @@ class QuestionController extends Controller
     /**
      * Creates a new question entity.
      *
-     * @Route("/new", name="question_new")
+     * @Route("/questions/new", name="question_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
