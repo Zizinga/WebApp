@@ -1,16 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Joke creation</h1>
+    <div class="col-md-12">
+        <!--Form with header-->
+        <div class="card">
+            <div class="card-block">
+                {{ form_start(form) }}
+                <!--Header-->
+                <div class="text-center">
+                    <h3><i class="fa fa-pencil"></i> Post A Joke</h3>
+                    <hr class="mt-2 mb-2">
+                </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+                <!--Body-->
+                <div class="md-form">
+                    <i class="fa fa-newspaper-o prefix"></i>
+                    {{ form_widget(form.content, {'attr': {'class':'md-textarea'} }) }}
+                    <label for="form2">Joke Content</label>
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('joke_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+
+                <div class="text-center">
+                    <button class="btn btn-indigo">Submit</button>
+                    <hr>
+                </div>
+            {{ form_end(form) }}
+            </div>
+        </div>
+        <!--/Form with header-->
+    </div>
 {% endblock %}

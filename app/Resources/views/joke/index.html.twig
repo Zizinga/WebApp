@@ -1,43 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Jokes list</h1>
+   <div class="col-lg-12">
+           <hr class="my-3">
+       <!--Post-->
+       <div class="post-wrapper wow fadeIn" data-wow-delay="0.2s">
+           <div class="md-form">
+               <i class="fa fa-search prefix"></i>
+               <input type="text" id="form76" class="form-control">
+               <label for="form76">Search..</label>
+           </div>
+           {% for joke in jokes %}
+           <!--Jumbotrons for the jokes-->
+           <div class="jumbotron">
+               <p class="lead">{{ joke.content }}</p>
+               <hr class="my-2"><br>
+               <h6>Posted by <a href="">James Kisoro</a> {{ joke.date|date('D d/M/Y') }}</h6>
+               <a class="btn btn-default"><i class="fa fa-thumbs-up left"></i></a>
+               <a class="btn btn-default"><i class="fa fa-thumbs-down left"></i></a>
+           </div>
+           <!--/.Jumbotron-->
+           {% endfor %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Content</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for joke in jokes %}
-            <tr>
-                <td><a href="{{ path('joke_show', { 'id': joke.id }) }}">{{ joke.id }}</a></td>
-                <td>{{ joke.content }}</td>
-                <td>{% if joke.date %}{{ joke.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if joke.status %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('joke_show', { 'id': joke.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('joke_edit', { 'id': joke.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('joke_new') }}">Create a new joke</a>
-        </li>
-    </ul>
+       </div>
+       <!--/.Post-->
+   </div>
 {% endblock %}

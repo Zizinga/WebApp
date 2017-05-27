@@ -5,12 +5,12 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Joke;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * Joke controller.
- *
- * @Route("joke")
  */
 class JokeController extends Controller
 {
@@ -18,13 +18,14 @@ class JokeController extends Controller
      * Lists all joke entities.
      *
      * @Route("/jokes", name="joke_index")
-     * @Method("GET")
+     *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $jokes = $em->getRepository('AppBundle:Joke')->findAll();
+        //Sort Entries by ID in descending order
+        $jokes = $em->getRepository('AppBundle:Joke')->findBy(array(), array( 'id' => 'DESC' ));
 
         return $this->render('joke/index.html.twig', array(
             'jokes' => $jokes,
@@ -39,7 +40,15 @@ class JokeController extends Controller
      */
     public function newAction(Request $request)
     {
+        if
+        (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        $user = $this->getUser();
         $joke = new Joke();
+        $joke->setDate(new \DateTime('now'));
+        $joke->setStatus(true);
+        $joke->setAuthor($user);
         $form = $this->createForm('AppBundle\Form\JokeType', $joke);
         $form->handleRequest($request);
 
@@ -48,7 +57,7 @@ class JokeController extends Controller
             $em->persist($joke);
             $em->flush();
 
-            return $this->redirectToRoute('joke_show', array('id' => $joke->getId()));
+            return $this->redirectToRoute('joke_index');
         }
 
         return $this->render('joke/new.html.twig', array(
