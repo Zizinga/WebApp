@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Questions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>Date</th>
+                <th>Enabled</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td><a href="{{ path('question_show', { 'id': question.id }) }}">{{ question.id }}</a></td>
+                <td>{{ question.content }}</td>
+                <td>{% if question.date %}{{ question.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if question.enabled %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('question_show', { 'id': question.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('question_edit', { 'id': question.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('question_new') }}">Create a new question</a>
+        </li>
+    </ul>
+{% endblock %}

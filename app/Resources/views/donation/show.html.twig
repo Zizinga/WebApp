@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Donation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ donation.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if donation.date %}{{ donation.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ donation.phone }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ donation.amount }}</td>
+            </tr>
+            <tr>
+                <th>Currency</th>
+                <td>{{ donation.currency }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ donation.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('donation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('donation_edit', { 'id': donation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

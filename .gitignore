@@ -41,3 +41,5 @@
 /web/bundles/
 /web/uploads/
 .idea/workspace.xml
+
+.idea/WebApp.iml

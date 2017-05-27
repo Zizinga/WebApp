@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Answers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>Date</th>
+                <th>Enabled</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for answer in answers %}
+            <tr>
+                <td><a href="{{ path('answer_show', { 'id': answer.id }) }}">{{ answer.id }}</a></td>
+                <td>{{ answer.content }}</td>
+                <td>{% if answer.date %}{{ answer.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if answer.enabled %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('answer_show', { 'id': answer.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('answer_edit', { 'id': answer.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('answer_new') }}">Create a new answer</a>
+        </li>
+    </ul>
+{% endblock %}
