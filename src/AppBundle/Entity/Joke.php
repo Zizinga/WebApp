@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints AS Assert;
 
 /**
  * Joke
@@ -22,9 +23,15 @@ class Joke
     private $id;
 
     /**
-     * @var string
+     * The Content of the joke
+     * @Assert\NotBlank(message="Please provide your some content")
+     * * @Assert\Length(
+     *      min = 5,
+     *      minMessage = "Naye nawe add some content....",
+     * )
      *
      * @ORM\Column(name="content", type="string", length=255)
+     * @var string
      */
     private $content;
 

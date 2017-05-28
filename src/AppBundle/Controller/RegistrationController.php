@@ -7,9 +7,22 @@
 
 namespace AppBundle\Controller;
 
+use Doctrine\DBAL\Types\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use FOS\UserBundle\Model\UserInterface;
+use AppBundle\Entity\User;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationController extends BaseController
 {
@@ -52,7 +65,7 @@ class RegistrationController extends BaseController
                 );
 
                 if (null === $response = $event->getResponse()) {
-                    $url = $this->generateUrl('jokes_index');
+                    $url = $this->generateUrl('joke_index');
                     $response = new RedirectResponse($url);
                 }
 

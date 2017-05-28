@@ -10,14 +10,22 @@
                <input type="text" id="form76" class="form-control">
                <label for="form76">Search..</label>
            </div>
+
            {% for joke in jokes %}
            <!--Jumbotrons for the jokes-->
            <div class="jumbotron">
                <p class="lead">{{ joke.content }}</p>
                <hr class="my-2"><br>
                <h6>Posted by <a href="">{{ joke.author.comicname }}</a> {{ joke.date|date('D d/M/Y') }}</h6>
-               <a class="btn btn-default"><i class="fa fa-thumbs-up left"></i></a>
-               <a class="btn btn-default"><i class="fa fa-thumbs-down left"></i></a>
+               <a class="btn btn-sm btn-default"><i class="fa fa-thumbs-up left"> {{ joke.id+3 }}</i></a>
+               <a class="btn btn-sm btn-default"><i class="fa fa-thumbs-down left"> {{ joke.id }}</i></a>
+               <a class="btn btn-social-icon btn-twitter" href="http://twitter.com">
+                   <span class="fa fa-twitter"></span>
+               </a>
+               <a class="btn btn-social-icon btn-facebook" href="http://facebook.com">
+                   <span class="fa fa-facebook"></span>
+               </a>
+
            </div>
            <!--/.Jumbotron-->
            {% endfor %}
@@ -27,3 +35,8 @@
        <!--/.Post-->
    </div>
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx.min.js"></script>
+    <script src="{{ asset('js/infinite-scroll.js') }}"></script>
+{% endblock javascripts %}
