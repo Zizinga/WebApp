@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block body %}
+    <div class="col-centered col-md-12">
+        {% if error %}
+            <hr class="m-3">
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <hr class="m-3">
+        <div class="card col-centered">
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                {% if csrf_token %}
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                {% endif %}
+                <div class="card-block">
+
+                    <!--Header-->
+                    <div class="text-center">
+                        <h3><i class="fa fa-lock"></i> Login:</h3>
+                        <hr class="mt-2 mb-2">
+                    </div>
+
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" id="username" name="_username" required="required"
+                               value="{{ last_username }}" class="form-control">
+                        <label for="username">{{ 'security.login.username'|trans }}</label>
+                    </div>
+
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input type="password" id="password" name="_password" required="required" class="form-control">
+                        <label for="password">{{ 'security.login.password'|trans }}</label>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-deep-purple">Login</button>
+                    </div>
+
+                </div>
+                <div class="text-center">
+                    <p>Not a member? <a href="{{ path('fos_user_registration_register') }}">Sign Up</a> | Forgot <a
+                                href="#">Password?</a></p>
+                </div>
+
+            </form>
+        </div>
+        <!--/Form without header-->
+    </div>
+
+{% endblock body %}

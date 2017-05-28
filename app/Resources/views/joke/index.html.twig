@@ -15,7 +15,7 @@
            <div class="jumbotron">
                <p class="lead">{{ joke.content }}</p>
                <hr class="my-2"><br>
-               <h6>Posted by <a href="">James Kisoro</a> {{ joke.date|date('D d/M/Y') }}</h6>
+               <h6>Posted by <a href="">{{ joke.author.comicname }}</a> {{ joke.date|date('D d/M/Y') }}</h6>
                <a class="btn btn-default"><i class="fa fa-thumbs-up left"></i></a>
                <a class="btn btn-default"><i class="fa fa-thumbs-down left"></i></a>
            </div>

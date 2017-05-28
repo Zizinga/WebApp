@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block body %}
+    <div class="col-centered col-md-12">
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            <hr class="m-3">
+            <div class="text-danger">{{ form_errors(form) }}</div>
+
+        <hr class="m-3">
+        <div class="card col-centered">
+
+                <div class="card-block">
+
+                    <!--Header-->
+                    <div class="text-center">
+                        <h3><i class="fa fa-lock"></i> Register to post jokes:</h3>
+                        <hr class="mt-2 mb-2">
+                    </div>
+
+                    <!--Body-->
+                    {{ form_widget(form)}}
+                    <div class="text-center">
+                        <button class="btn btn-deep-purple" type="submit">Register</button>
+                    </div>
+
+                </div>
+
+
+            <div class="text-center">
+                <p>Already a member? <a href="{{ path('fos_user_registration_register') }}">Login</a> </p>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+        <!--/Form without header-->
+    </div>
+
+{% endblock body %}

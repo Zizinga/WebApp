@@ -69,25 +69,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('joke_new') }}">Post A Joke</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Ask Zizinga</a>
-                    </li>
-                    <li class="nav-item dropdown btn-group">
-                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">Zizinga Questions</a>
-                        <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                            <a class="dropdown-item">Current Questions</a>
-                            <a class="dropdown-item">Past Questions</a>
-                        </div>
-                    </li>
                 </ul>
                 <li class="nav-item dropdown btn-group">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">My Profile</a>
-                    <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item">Login</a>
-                        <a class="dropdown-item">Register</a>
-                    </div>
+                    {% if app.user %}
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Hello {{ app.user.comicName }}</a>
+                        <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Logout</a>
+                        </div>
+                    {% else %}
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">My Profile</a>
+                        <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="{{ path('fos_user_security_login') }}">Login</a>
+                            <a class="dropdown-item" href="{{ path('fos_user_registration_register') }}">Register</a>
+                        </div>
+                    {% endif %}
+
                 </li>
             </div>
         </div>

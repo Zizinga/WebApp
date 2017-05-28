@@ -11,3 +11,7 @@
 .list-group-item:not(.active):hover {
     color:#666;
 }
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
